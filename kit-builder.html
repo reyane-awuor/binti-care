@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Build Your Binti Kit - Binti Care</title>
+    <title>Build Your Earlybloom Kit - Earlybloom Care</title>
     <link rel="stylesheet" href="../style.css">
     <style>
         .kit-builder-container {
@@ -144,7 +144,7 @@
 <body>
     <header>
         <nav>
-            <div class="logo">Binti Care</div>
+            <div class="logo">Earlybloom Care</div>
             <ul>
                 <li><a href="../index.html">Home</a></li>
                 <li><a href="resources.html">Resources</a></li>
@@ -230,14 +230,14 @@
     </main>
 
     <script>
-        // Canvas and state management
+        
         const canvas = document.getElementById('kitCanvas');
         const ctx = canvas.getContext('2d');
         const finalKit = document.getElementById('finalKit');
         
         let currentItems = [];
         
-        // Item configurations
+        
         const itemConfigs = {
             pads: { emoji: '🩹', name: 'Comfort Pads', color: '#ff6b8b' },
             wipes: { emoji: '🧻', name: 'Cleaning Wipes', color: '#4ecdc4' },
@@ -247,38 +247,38 @@
             sticker: { emoji: '⭐', name: 'Fun Stickers', color: '#ff9ff3' }
         };
 
-        // Positions for items on canvas
+        
         const itemPositions = [
             { x: 100, y: 80 }, { x: 200, y: 80 }, { x: 300, y: 80 },
             { x: 100, y: 180 }, { x: 200, y: 180 }, { x: 300, y: 180 },
             { x: 100, y: 280 }, { x: 200, y: 280 }, { x: 300, y: 280 }
         ];
 
-        // Initialize canvas
+        
         function initCanvas() {
             drawKitTemplate();
         }
 
-        // Draw the kit template
+        
         function drawKitTemplate() {
-            // Clear canvas
+            /
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             
-            // Draw background
+          
             ctx.fillStyle = '#f8f0ff';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             
-            // Draw title
+          
             ctx.fillStyle = '#5a2d9c';
             ctx.font = 'bold 18px Arial';
             ctx.textAlign = 'center';
             ctx.fillText('My Binti Care Kit', canvas.width / 2, 30);
             
-            // Draw grid lines
+            
             ctx.strokeStyle = '#e0d0ff';
             ctx.lineWidth = 1;
             
-            // Vertical lines
+            
             for (let x = 0; x <= canvas.width; x += 100) {
                 ctx.beginPath();
                 ctx.moveTo(x, 40);
@@ -286,7 +286,7 @@
                 ctx.stroke();
             }
             
-            // Horizontal lines
+            
             for (let y = 40; y <= canvas.height; y += 100) {
                 ctx.beginPath();
                 ctx.moveTo(0, y);
@@ -294,22 +294,22 @@
                 ctx.stroke();
             }
             
-            // Draw current items
+            
             currentItems.forEach((itemType, index) => {
                 const position = itemPositions[index] || { x: 50, y: 50 };
                 const item = itemConfigs[itemType];
                 
                 if (item && position) {
-                    // Draw item background
-                    ctx.fillStyle = item.color + '40'; // Add transparency
+                    
+                    ctx.fillStyle = item.color + '40'; 
                     ctx.fillRect(position.x - 30, position.y - 30, 60, 60);
                     
-                    // Draw item emoji
+                    
                     ctx.font = '30px Arial';
                     ctx.fillStyle = item.color;
                     ctx.fillText(item.emoji, position.x, position.y);
                     
-                    // Draw item name
+                    
                     ctx.font = '10px Arial';
                     ctx.fillStyle = '#333';
                     ctx.fillText(item.name, position.x, position.y + 40);
@@ -317,14 +317,14 @@
             });
         }
 
-        // Add item to canvas
+        
         function addItemToCanvas(itemType) {
             if (!currentItems.includes(itemType)) {
                 currentItems.push(itemType);
                 drawKitTemplate();
                 updateKitPreview();
                 
-                // Visual feedback
+                
                 const itemElement = document.querySelector(`[data-item="${itemType}"]`);
                 itemElement.style.background = '#e0d0ff';
                 setTimeout(() => {
@@ -333,7 +333,7 @@
             }
         }
 
-        // Update the kit preview
+        
         function updateKitPreview() {
             if (currentItems.length === 0) {
                 finalKit.innerHTML = '<p>No items added yet. Click items above to build your kit!</p>';
@@ -351,14 +351,14 @@
             }).join('');
         }
 
-        // Clear canvas
+       
         function clearCanvas() {
             currentItems = [];
             drawKitTemplate();
             updateKitPreview();
         }
 
-        // Save kit
+      
         function saveKit() {
             if (currentItems.length === 0) {
                 alert('Please add some items to your kit first!');
@@ -371,11 +371,11 @@
                 timestamp: new Date().toISOString()
             };
             
-            localStorage.setItem('bintiKit', JSON.stringify(kitData));
+            localStorage.setItem('EarlybloomKit', JSON.stringify(kitData));
             alert('✅ Kit saved successfully! You can come back later to continue designing.');
         }
 
-        // Print kit guide
+        
         function printKit() {
             if (currentItems.length === 0) {
                 alert('Please add some items to your kit first!');
@@ -386,7 +386,7 @@
                 <!DOCTYPE html>
                 <html>
                 <head>
-                    <title>My Binti Kit Guide</title>
+                    <title>My Earlybloom Kit Guide</title>
                     <style>
                         body { font-family: Arial, sans-serif; padding: 20px; max-width: 800px; margin: 0 auto; }
                         .header { text-align: center; margin-bottom: 30px; }
@@ -441,7 +441,7 @@
                 return;
             }
             
-            const kitSummary = `My Binti Kit contains: ${currentItems.map(item => itemConfigs[item].name).join(', ')}`;
+            const kitSummary = `My Earlybloom Kit contains: ${currentItems.map(item => itemConfigs[item].name).join(', ')}`;
             alert(`Share your kit:\n\n${kitSummary}\n\nYou can copy this text to share with others!`);
         }
 
