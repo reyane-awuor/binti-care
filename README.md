@@ -65,9 +65,9 @@ We approach this sensitive issue with core principles:
 
 ## Get Started
 
-*   **Explore Our Resources:** [Link to your future website/github pages site]
-*   **Join the Conversation:** [Link to your future community forum/social media]
-*   **Contact Us:** [Your Email]
+*   **Explore Our Resources:** [(https://github.com/reyane-awuor/final-project/edit/main/README.md)]
+*   **Join the Conversation:** [https://github.com/reyane-awuor/final-project/edit/main/README.md]
+*   **Contact Us:** [reyawuor@gmail.com]
 
 ## License
 
@@ -75,4 +75,4 @@ This project and its educational materials are licensed under the Creative Commo
 
 ---
 
-This revised README positions your project as a forward-thinking, necessary solution to a modern global health challenge. It's compelling and invites collaboration from a worldwide audience. Good luck with your project!
+
