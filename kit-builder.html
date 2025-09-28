@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Build Your Binti Kit - Binti Care</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .kit-builder-container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        .builder-interface {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .items-palette {
+            background: #f8f0ff;
+            border-radius: 10px;
+            padding: 1.5rem;
+            height: fit-content;
+        }
+        
+        .kit-item {
+            background: white;
+            border: 2px solid #e0d0ff;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            cursor: grab;
+            text-align: center;
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+        
+        .kit-item:active {
+            cursor: grabbing;
+        }
+        
+        .kit-item:hover {
+            transform: translateY(-2px);
+            border-color: #8a4fff;
+            box-shadow: 0 4px 8px rgba(138, 79, 255, 0.2);
+        }
+        
+        .kit-item .emoji {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        
+        .canvas-container {
+            background: #f0f0f0;
+            border-radius: 10px;
+            padding: 2rem;
+            text-align: center;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+        }
+        
+        #kitCanvas {
+            border: 2px solid #8a4fff;
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            margin: 1rem 0;
+        }
+        
+        .kit-controls {
+            margin: 1rem 0;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        
+        .control-btn {
+            background: #8a4fff;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .control-btn:hover {
+            background: #5a2d9c;
+            transform: scale(1.05);
+        }
+        
+        .control-btn:active {
+            transform: scale(0.95);
+        }
+        
+        .kit-preview {
+            margin-top: 2rem;
+            padding: 2rem;
+            background: #f8f0ff;
+            border-radius: 10px;
+            text-align: center;
+        }
+        
+        #finalKit {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+        
+        .preview-item {
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            min-width: 100px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .preview-emoji {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .drag-instructions {
+            background: #e0d0ff;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Binti Care</div>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="stories.html">Stories</a></li>
+                <li><a href="kit-builder.html" style="color: #8a4fff;">Kit Builder</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="kit-builder-container">
+        <h1>Build Your Binti Kit</h1>
+        <p>Create a personalized period kit for young girls. Click items to add them to your kit!</p>
+        
+        <div class="drag-instructions">
+            <strong>How to build your kit:</strong> Click on the items below to add them to your kit canvas. 
+            Each click adds the item to your personalized kit.
+        </div>
+        
+        <div class="builder-interface">
+            <div class="items-palette">
+                <h3>🛍️ Kit Items</h3>
+                <p>Click items to add to your kit:</p>
+                
+                <div class="kit-item" data-item="pads" onclick="addItemToCanvas('pads')">
+                    <span class="emoji">🩹</span>
+                    <strong>Comfort Pads</strong>
+                    <p>Soft, small pads for young girls</p>
+                </div>
+                
+                <div class="kit-item" data-item="wipes" onclick="addItemToCanvas('wipes')">
+                    <span class="emoji">🧻</span>
+                    <strong>Cleaning Wipes</strong>
+                    <p>Gentle, pH-balanced wipes</p>
+                </div>
+                
+                <div class="kit-item" data-item="underwear" onclick="addItemToCanvas('underwear')">
+                    <span class="emoji">👖</span>
+                    <strong>Extra Underwear</strong>
+                    <p>Comfortable cotton underwear</p>
+                </div>
+                
+                <div class="kit-item" data-item="bag" onclick="addItemToCanvas('bag')">
+                    <span class="emoji">🎒</span>
+                    <strong>Discrete Bag</strong>
+                    <p>Colorful, discreet carrying bag</p>
+                </div>
+                
+                <div class="kit-item" data-item="guide" onclick="addItemToCanvas('guide')">
+                    <span class="emoji">📖</span>
+                    <strong>Picture Guide</strong>
+                    <p>Simple instructions with images</p>
+                </div>
+                
+                <div class="kit-item" data-item="sticker" onclick="addItemToCanvas('sticker')">
+                    <span class="emoji">⭐</span>
+                    <strong>Fun Stickers</strong>
+                    <p>Reward and achievement stickers</p>
+                </div>
+            </div>
+            
+            <div class="canvas-container">
+                <h3>🎨 Design Your Kit</h3>
+                <p>Click items on the left to add them here</p>
+                
+                <canvas id="kitCanvas" width="500" height="350"></canvas>
+                
+                <div class="kit-controls">
+                    <button class="control-btn" onclick="clearCanvas()">🗑️ Clear Canvas</button>
+                    <button class="control-btn" onclick="saveKit()">💾 Save Kit</button>
+                    <button class="control-btn" onclick="printKit()">🖨️ Print Guide</button>
+                    <button class="control-btn" onclick="shareKit()">📤 Share Kit</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="kit-preview">
+            <h3>📋 Your Kit Contents</h3>
+            <div id="finalKit">
+                <p>No items added yet. Click items above to build your kit!</p>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Canvas and state management
+        const canvas = document.getElementById('kitCanvas');
+        const ctx = canvas.getContext('2d');
+        const finalKit = document.getElementById('finalKit');
+        
+        let currentItems = [];
+        
+        // Item configurations
+        const itemConfigs = {
+            pads: { emoji: '🩹', name: 'Comfort Pads', color: '#ff6b8b' },
+            wipes: { emoji: '🧻', name: 'Cleaning Wipes', color: '#4ecdc4' },
+            underwear: { emoji: '👖', name: 'Extra Underwear', color: '#45b7d1' },
+            bag: { emoji: '🎒', name: 'Discrete Bag', color: '#96ceb4' },
+            guide: { emoji: '📖', name: 'Picture Guide', color: '#feca57' },
+            sticker: { emoji: '⭐', name: 'Fun Stickers', color: '#ff9ff3' }
+        };
+
+        // Positions for items on canvas
+        const itemPositions = [
+            { x: 100, y: 80 }, { x: 200, y: 80 }, { x: 300, y: 80 },
+            { x: 100, y: 180 }, { x: 200, y: 180 }, { x: 300, y: 180 },
+            { x: 100, y: 280 }, { x: 200, y: 280 }, { x: 300, y: 280 }
+        ];
+
+        // Initialize canvas
+        function initCanvas() {
+            drawKitTemplate();
+        }
+
+        // Draw the kit template
+        function drawKitTemplate() {
+            // Clear canvas
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw background
+            ctx.fillStyle = '#f8f0ff';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Draw title
+            ctx.fillStyle = '#5a2d9c';
+            ctx.font = 'bold 18px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('My Binti Care Kit', canvas.width / 2, 30);
+            
+            // Draw grid lines
+            ctx.strokeStyle = '#e0d0ff';
+            ctx.lineWidth = 1;
+            
+            // Vertical lines
+            for (let x = 0; x <= canvas.width; x += 100) {
+                ctx.beginPath();
+                ctx.moveTo(x, 40);
+                ctx.lineTo(x, canvas.height);
+                ctx.stroke();
+            }
+            
+            // Horizontal lines
+            for (let y = 40; y <= canvas.height; y += 100) {
+                ctx.beginPath();
+                ctx.moveTo(0, y);
+                ctx.lineTo(canvas.width, y);
+                ctx.stroke();
+            }
+            
+            // Draw current items
+            currentItems.forEach((itemType, index) => {
+                const position = itemPositions[index] || { x: 50, y: 50 };
+                const item = itemConfigs[itemType];
+                
+                if (item && position) {
+                    // Draw item background
+                    ctx.fillStyle = item.color + '40'; // Add transparency
+                    ctx.fillRect(position.x - 30, position.y - 30, 60, 60);
+                    
+                    // Draw item emoji
+                    ctx.font = '30px Arial';
+                    ctx.fillStyle = item.color;
+                    ctx.fillText(item.emoji, position.x, position.y);
+                    
+                    // Draw item name
+                    ctx.font = '10px Arial';
+                    ctx.fillStyle = '#333';
+                    ctx.fillText(item.name, position.x, position.y + 40);
+                }
+            });
+        }
+
+        // Add item to canvas
+        function addItemToCanvas(itemType) {
+            if (!currentItems.includes(itemType)) {
+                currentItems.push(itemType);
+                drawKitTemplate();
+                updateKitPreview();
+                
+                // Visual feedback
+                const itemElement = document.querySelector(`[data-item="${itemType}"]`);
+                itemElement.style.background = '#e0d0ff';
+                setTimeout(() => {
+                    itemElement.style.background = 'white';
+                }, 300);
+            }
+        }
+
+        // Update the kit preview
+        function updateKitPreview() {
+            if (currentItems.length === 0) {
+                finalKit.innerHTML = '<p>No items added yet. Click items above to build your kit!</p>';
+                return;
+            }
+            
+            finalKit.innerHTML = currentItems.map(itemType => {
+                const item = itemConfigs[itemType];
+                return `
+                    <div class="preview-item">
+                        <div class="preview-emoji">${item.emoji}</div>
+                        <strong>${item.name}</strong>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Clear canvas
+        function clearCanvas() {
+            currentItems = [];
+            drawKitTemplate();
+            updateKitPreview();
+        }
+
+        // Save kit
+        function saveKit() {
+            if (currentItems.length === 0) {
+                alert('Please add some items to your kit first!');
+                return;
+            }
+            
+            const kitData = {
+                items: currentItems,
+                created: new Date().toLocaleDateString(),
+                timestamp: new Date().toISOString()
+            };
+            
+            localStorage.setItem('bintiKit', JSON.stringify(kitData));
+            alert('✅ Kit saved successfully! You can come back later to continue designing.');
+        }
+
+        // Print kit guide
+        function printKit() {
+            if (currentItems.length === 0) {
+                alert('Please add some items to your kit first!');
+                return;
+            }
+            
+            const printContent = `
+                <!DOCTYPE html>
+                <html>
+                <head>
+                    <title>My Binti Kit Guide</title>
+                    <style>
+                        body { font-family: Arial, sans-serif; padding: 20px; max-width: 800px; margin: 0 auto; }
+                        .header { text-align: center; margin-bottom: 30px; }
+                        .kit-items { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+                        .item-card { border: 2px solid #8a4fff; border-radius: 10px; padding: 15px; text-align: center; }
+                        .emoji { font-size: 2em; margin-bottom: 10px; }
+                        .checklist { margin-top: 30px; padding: 20px; background: #f8f0ff; border-radius: 10px; }
+                    </style>
+                </head>
+                <body>
+                    <div class="header">
+                        <h1>My Binti Care Kit</h1>
+                        <p>Created on: ${new Date().toLocaleDateString()}</p>
+                    </div>
+                    
+                    <div class="kit-items">
+                        ${currentItems.map(itemType => {
+                            const item = itemConfigs[itemType];
+                            return `
+                                <div class="item-card">
+                                    <div class="emoji">${item.emoji}</div>
+                                    <h3>${item.name}</h3>
+                                </div>
+                            `;
+                        }).join('')}
+                    </div>
+                    
+                    <div class="checklist">
+                        <h2>Kit Checklist</h2>
+                        <ul>
+                            ${currentItems.map(itemType => {
+                                const item = itemConfigs[itemType];
+                                return `<li>✓ ${item.name}</li>`;
+                            }).join('')}
+                        </ul>
+                    </div>
+                </body>
+                </html>
+            `;
+            
+            const printWindow = window.open('', '_blank');
+            printWindow.document.write(printContent);
+            printWindow.document.close();
+            printWindow.focus();
+            printWindow.print();
+        }
+
+      
+        function shareKit() {
+            if (currentItems.length === 0) {
+                alert('Please add some items to your kit first!');
+                return;
+            }
+            
+            const kitSummary = `My Binti Kit contains: ${currentItems.map(item => itemConfigs[item].name).join(', ')}`;
+            alert(`Share your kit:\n\n${kitSummary}\n\nYou can copy this text to share with others!`);
+        }
+
+       
+        window.addEventListener('load', initCanvas);
+    </script>
+</body>
+</html>
