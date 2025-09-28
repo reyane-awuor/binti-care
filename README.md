@@ -1,6 +1,6 @@
-# final-project
-binti care
-Excellent point. Framing it as a global issue makes the project more universally relevant and impactful. Here's the revised README file with a global perspective.
+# binti care
+"A platform supporting girls experiencing early puberty with resources and community"
+
 
 ---
 
