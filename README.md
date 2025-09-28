@@ -19,7 +19,7 @@ Excellent point. Framing it as a global issue makes the project more universally
 
 The age of puberty is declining globally. What was once a topic for pre-teens is now a reality for young children. This creates a critical gap:
 
-*   **Unprepared Children:** A 7-year-old is emotionally and cognitively unprepared for menstruation. She experiences fear, confusion, and shame, often believing she is sick or has done something wrong.
+*   **Unprepared Children:** A 7 or 8-year-old is emotionally and cognitively unprepared for menstruation. She experiences fear, confusion, and shame, often believing she is sick or has done something wrong.
 *   **Unprepared Parents & Guardians:** Families are caught off guard, lacking the resources and language to explain these changes to a very young child. Many struggle to find age-appropriate products and information.
 *   **Systemic Gap:** School curricula and health systems worldwide have not adapted. Puberty education typically starts years after many girls need it, leaving them vulnerable and unsupported.
 
