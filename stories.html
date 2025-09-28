@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stories - Binti Care</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .stories-container {
+            max-width: 1000px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        .story-card {
+            background: #f8f0ff;
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .story-card:hover {
+            transform: translateY(-2px);
+        }
+        
+        .story-card h3 {
+            color: #5a2d9c;
+            margin-bottom: 1rem;
+        }
+        
+        .audio-player {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid #8a4fff;
+        }
+        
+        .play-btn {
+            background: #8a4fff;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            margin: 0.5rem 0;
+        }
+        
+        .play-btn:hover {
+            background: #5a2d9c;
+            transform: scale(1.05);
+        }
+        
+        .audio-info {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .audio-info span {
+            background: #e0d0ff;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .stop-btn {
+            background: #ff6b4a;
+            margin-left: 1rem;
+        }
+        
+        .stop-btn:hover {
+            background: #e0553a;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Binti Care</div>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="stories.html" style="color: #8a4fff;">Stories</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="stories-container">
+        <div style="text-align: center; margin-bottom: 2rem;">
+            <button onclick="pauseAllStories()" class="play-btn stop-btn">⏹️ Stop All Audio</button>
+        </div>
+        
+        <h1>Audio Stories for Girls</h1>
+        <p>Gentle, age-appropriate stories to help girls understand and feel comfortable with their changing bodies.</p>
+        
+        <div class="story-card">
+            <h3>🌸 Amina's Special Change</h3>
+            <p>Join 8-year-old Amina as she discovers what it means when her body starts changing earlier than her friends.</p>
+            <div class="audio-player">
+                <div class="audio-info">
+                    <span>⏱️ Duration: 7 minutes</span>
+                    <span>👧 Age: 7-10 years</span>
+                    <span>🎵 Click to play</span>
+                </div>
+                <button class="play-btn" onclick="playStory('amina')">
+                    ▶️ Play Story
+                </button>
+            </div>
+        </div>
+        
+        <div class="story-card">
+            <h3>🌟 Sofia's Secret Superpower</h3>
+            <p>Sofia learns that growing up is like discovering a new superpower - it might be surprising, but it's completely normal!</p>
+            <div class="audio-player">
+                <div class="audio-info">
+                    <span>⏱️ Duration: 6 minutes</span>
+                    <span>👧 Age: 7-9 years</span>
+                    <span>🎵 Click to play</span>
+                </div>
+                <button class="play-btn" onclick="playStory('sofia')">
+                    ▶️ Play Story
+                </button>
+            </div>
+        </div>
+        
+        <div class="story-card">
+            <h3>💕 Maya and Her Mom's Special Talk</h3>
+            <p>A heartwarming story about a mother-daughter conversation that makes everything feel safe and understood.</p>
+            <div class="audio-player">
+                <div class="audio-info">
+                    <span>⏱️ Duration: 8 minutes</span>
+                    <span>👧 Age: 7-10 years</span>
+                    <span>🎵 Click to play</span>
+                </div>
+                <button class="play-btn" onclick="playStory('maya')">
+                    ▶️ Play Story
+                </button>
+            </div>
+        </div>
+        
+        <div class="coming-soon">
+            <h3>More Stories Coming Soon!</h3>
+            <p>We're creating new stories in different languages and for different age groups.</p>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Binti Care. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const stories = {
+            amina: {
+                title: "Amina's Special Change",
+                audioFile: "https://www.soundjay.com/button/button-1.mp3",
+                duration: "7 minutes"
+            },
+            sofia: {
+                title: "Sofia's Secret Superpower", 
+                audioFile: "https://www.soundjay.com/button/button-2.mp3",
+                duration: "6 minutes"
+            },
+            maya: {
+                title: "Maya and Her Mom's Special Talk",
+                audioFile: "https://www.soundjay.com/button/button-3.mp3",
+                duration: "8 minutes"
+            }
+        };
+
+        let currentAudio = null;
+
+        function playStory(storyName) {
+            const story = stories[storyName];
+            
+            // Stop any currently playing audio
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+                // Reset all buttons
+                document.querySelectorAll('.play-btn').forEach(btn => {
+                    if (!btn.classList.contains('stop-btn')) {
+                        btn.innerHTML = '▶️ Play Story';
+                        btn.style.background = '#8a4fff';
+                    }
+                });
+            }
+
+            // Create new audio element
+            currentAudio = new Audio(story.audioFile);
+            
+            currentAudio.onended = function() {
+                const currentBtn = document.querySelector(`[onclick="playStory('${storyName}')"]`);
+                if (currentBtn) {
+                    currentBtn.innerHTML = '▶️ Play Story';
+                    currentBtn.style.background = '#8a4fff';
+                }
+            };
+
+            currentAudio.onplay = function() {
+                // Reset all buttons first
+                document.querySelectorAll('.play-btn').forEach(btn => {
+                    if (!btn.classList.contains('stop-btn')) {
+                        btn.innerHTML = '▶️ Play Story';
+                        btn.style.background = '#8a4fff';
+                    }
+                });
+                
+                // Set current playing button
+                const currentBtn = document.querySelector(`[onclick="playStory('${storyName}')"]`);
+                currentBtn.innerHTML = '⏸️ Playing...';
+                currentBtn.style.background = '#5a2d9c';
+            };
+
+            // Play the audio
+            currentAudio.play();
+        }
+
+        function pauseAllStories() {
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+                document.querySelectorAll('.play-btn').forEach(btn => {
+                    if (!btn.classList.contains('stop-btn')) {
+                        btn.innerHTML = '▶️ Play Story';
+                        btn.style.background = '#8a4fff';
+                    }
+                });
+            }
+        }
+    </script>
+</body>
+</html>

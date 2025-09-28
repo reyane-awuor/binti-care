@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources - Binti Care</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .resources-container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+        
+        .resource-section {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .resource-card {
+            background: #f8f0ff;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid #8a4fff;
+        }
+        
+        .download-btn {
+            background: #8a4fff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin: 0.5rem 0;
+        }
+        
+        .age-group {
+            display: inline-block;
+            background: #e0d0ff;
+            padding: 0.2rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">Binti Care</div>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="resources.html" style="color: #8a4fff;">Resources</a></li>
+                <li><a href="stories.html">Stories</a></li>
+                <li><a href="about.html">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="resources-container">
+        <h1>Resources for Parents & Educators</h1>
+        <p>Practical guides and materials to support girls through early puberty.</p>
+        
+        <div class="resource-section">
+            <h2>📚 For Parents</h2>
+            
+            <div class="resource-card">
+                <h3>How to Talk to Your Young Daughter About Puberty</h3>
+                <span class="age-group">Age: 6-9 years</span>
+                <p><strong>Key points:</strong></p>
+                <ul>
+                    <li>Use simple, age-appropriate language</li>
+                    <li>Choose a calm, private moment</li>
+                    <li>Use proper body part names</li>
+                    <li>Emphasize that changes are normal and natural</li>
+                    <li>Reassure her that you're there to help</li>
+                </ul>
+                <button class="download-btn" onclick="downloadResource('parent-guide')">📥 Download Guide (PDF)</button>
+            </div>
+            
+            <div class="resource-card">
+                <h3>Creating a First Period Kit for Young Girls</h3>
+                <p><strong>What to include:</strong></p>
+                <ul>
+                    <li>Small, thin pads (not intimidating adult sizes)</li>
+                    <li>Clean wipes</li>
+                    <li>Extra underwear</li>
+                    <li>A small discreet bag</li>
+                    <li>Simple instructions with pictures</li>
+                </ul>
+                <button class="download-btn" onclick="downloadResource('period-kit')">📥 Download Checklist</button>
+            </div>
+        </div>
+        
+        <div class="resource-section">
+            <h2>🏫 For Teachers & Schools</h2>
+            
+            <div class="resource-card">
+                <h3>Classroom Puberty Education for Young Grades</h3>
+                <span class="age-group">Grade: 1-3</span>
+                <p><strong>Lesson plan ideas:</strong></p>
+                <ul>
+                    <li>"Our Changing Bodies" - basic introduction</li>
+                    <li>"Good Hygiene Habits" - practical skills</li>
+                    <li>"Asking for Help" - when to talk to adults</li>
+                </ul>
+                <button class="download-btn" onclick="downloadResource('teacher-guide')">📥 Download Lesson Plans</button>
+            </div>
+        </div>
+        
+        <div class="resource-section">
+            <h2>👧 For Girls Themselves</h2>
+            
+            <div class="resource-card">
+                <h3>"My Body's Journey" Activity Book</h3>
+                <span class="age-group">Age: 7-10 years</span>
+                <p>Interactive coloring and activity pages that help girls understand body changes in a fun, non-threatening way.</p>
+                <button class="download-btn" onclick="downloadResource('activity-book')">📥 Download Activity Book</button>
+            </div>
+            
+            <div class="resource-card">
+                <h3>"When I Need Help" Guide</h3>
+                <p>Simple flowchart showing girls who to talk to when they have questions or concerns about their body.</p>
+                <button class="download-btn" onclick="downloadResource('help-guide')">📥 Download Guide</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function downloadResource(resourceType) {
+            // For now, create simple text files as placeholders
+            const resources = {
+                'parent-guide': {name: 'Parent_Guide.txt', content: 'Binti Care Parent Guide - How to talk about puberty with young girls.'},
+                'period-kit': {name: 'Period_Kit_Checklist.txt', content: 'Checklist for creating a first period kit.'},
+                'teacher-guide': {name: 'Teacher_Lesson_Plans.txt', content: 'Age-appropriate puberty education for young grades.'},
+                'activity-book': {name: 'Activity_Book.txt', content: 'Fun activities for girls to learn about their bodies.'},
+                'help-guide': {name: 'Help_Guide.txt', content: 'Who to talk to when you need help.'}
+            };
+            
+            const resource = resources[resourceType];
+            const blob = new Blob([resource.content], {type: 'text/plain'});
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = resource.name;
+            a.click();
+            URL.revokeObjectURL(url);
+            
+            alert(`Thank you for downloading! We're creating the full ${resource.name} version.`);
+        }
+    </script>
+</body>
+</html>
