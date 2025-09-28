@@ -1,14 +1,14 @@
-# binti care
+# early bloom care
 "A platform supporting girls experiencing early puberty with resources and community"
 
 
 ---
 
-# Binti Care Initiative
+# earlybloom Care Initiative
 
 ## Project Overview
 
-**Binti Care** is a global initiative addressing the silent crisis of early-onset puberty and menstruation in young girls. Across the world, girls are beginning puberty at increasingly younger ages, with many experiencing their first period as early as 7 or 8 years old. This shift presents unprecedented challenges for parents, educators, and the girls themselves. Our project provides a compassionate, practical response to ensure that every girl navigates this transition with safety, dignity, and confidence.
+**Earlybloom care** is a global initiative addressing the silent crisis of early-onset puberty and menstruation in young girls. Across the world, girls are beginning puberty at increasingly younger ages, with many experiencing their first period as early as 7 or 8 years old. This shift presents unprecedented challenges for parents, educators, and the girls themselves. Our project provides a compassionate, practical response to ensure that every girl navigates this transition with safety, dignity, and confidence.
 
 **Alignment with SDGs:**
 *   **SDG 3: Good Health & Well-being:** Promoting menstrual health management from a young age.
@@ -34,7 +34,7 @@ Binti Care meets this new global reality with a proactive, two-fold mission:
 
 ## Key Features of Our Approach
 
-*   **The Binti Kit:** A specially designed first-period kit for young girls. It contains smaller, child-friendly hygiene products, a simple picture book, and comforting items, all packaged in a non-intimidating, colorful way.
+*   **The earlrybloom Kit:** A specially designed first-period kit for young girls. It contains smaller, child-friendly hygiene products, a simple picture book, and comforting items, all packaged in a non-intimidating, colorful way.
 *   **Digital Story Hub:** A accessible library of audio stories and animations featuring characters who experience early puberty. These stories normalize the experience and explain it in a gentle, reassuring manner. Accessible via web and low-bandwidth options.
 *   **Resource Toolkit for Adults:** Guides for parents and teachers on "How to Talk to a Young Child About Puberty," including scripts, activity ideas, and answers to difficult questions.
 *   **Community Workshops:** Virtual and in-person sessions that create a supportive network for parents and caregivers navigating this early transition.
@@ -65,8 +65,8 @@ We approach this sensitive issue with core principles:
 
 ## Get Started
 
-*   **Explore Our Resources:** [(https://github.com/reyane-awuor/final-project/edit/main/README.md)]
-*   **Join the Conversation:** [https://github.com/reyane-awuor/final-project/edit/main/README.md]
+*   **Explore Our Resources:** [https://github.com/reyane-awuor/earlybloom-care/tree/main]
+*   **Join the Conversation:** [www.earlybloomcare.com]
 *   **Contact Us:** [reyawuor@gmail.com]
 
 ## License
